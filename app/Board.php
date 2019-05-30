@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Message;
 
 class Board extends Model
 {
@@ -11,4 +12,8 @@ class Board extends Model
         'title',
         'banner'
     ];
+
+    public function messages() {
+        return $this->hasMany(Message::class);
+    }
 }

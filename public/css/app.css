@@ -76,6 +76,7 @@ body {
   position: fixed;
   bottom: 0;
   padding: 1rem 0;
+  background: #fff;
 }
 
 #main-footer p {
@@ -182,6 +183,7 @@ body {
 
 #board-content {
   padding: 1rem 0;
+  margin-bottom: 5rem;
 }
 
 #board-content h2 {
@@ -198,5 +200,68 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+#board-content .message-form {
+  flex-direction: column;
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+#board-content .message-form .input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+#board-content .message-form .input-group label {
+  font-size: 14px;
+  color: #3f3f3f;
+  text-transform: uppercase;
+}
+
+#board-content .message-form .input-group input,
+#board-content .message-form .input-group textarea {
+  background: #dddcdc;
+  padding: 0.5rem;
+}
+
+#board-content .message-form button {
+  margin: 1rem 0;
+  border: 0;
+  padding: 1rem;
+  background: #3f3f3f;
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+#board-messages {
+  padding: 1rem 0;
+}
+
+#board-messages li {
+  display: block;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+}
+
+#board-messages li p {
+  display: block;
+  color: #3f3f3f;
+  font-size: 14px;
+}
+
+#board-messages li p.title {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+#board-messages li p.text-content {
+  font-size: 16px;
+  margin: 0.5rem 0;
 }
 

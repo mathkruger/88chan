@@ -65608,6 +65608,7 @@ module.exports = function(module) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_BoardMessages__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/BoardMessages */ "./resources/js/components/BoardMessages.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -65630,6 +65631,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
+
 var Board =
 /*#__PURE__*/
 function (_Component) {
@@ -65641,6 +65643,20 @@ function (_Component) {
     _classCallCheck(this, Board);
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Board).call(this));
+
+    _defineProperty(_assertThisInitialized(_this), "sendMessage", function (e) {
+      e.preventDefault();
+      document.querySelector('#board-content .message-form button').innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+      var form = new FormData(e.target);
+      axios.post('/api/messages', form).then(function (res) {
+        if (res.data.status) {
+          document.querySelector('#board-content .message-form').reset();
+          document.querySelector('#board-content .message-form button').innerHTML = 'Send';
+
+          _this.getBoard();
+        }
+      });
+    });
 
     _defineProperty(_assertThisInitialized(_this), "getBoard", function () {
       axios.get('/api/boards/' + _this.props.match.params.slug).then(function (res) {
@@ -65677,7 +65693,36 @@ function (_Component) {
         style: {
           backgroundImage: 'url(' + this.state.board.banner + ')'
         }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "/b/", this.state.board.title))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "/b/", this.state.board.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "message-form",
+        onSubmit: this.sendMessage
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        type: "hidden",
+        name: "board_id",
+        value: this.state.board.id
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Subject"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
+        type: "text",
+        name: "subject",
+        placeholder: "Subject"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Author name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        required: true,
+        type: "text",
+        name: "author",
+        placeholder: "Author"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "input-group"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Message"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        name: "content",
+        rows: "5",
+        placeholder: "Your message here"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BoardMessages__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        messages: this.state.board.messages
+      }))));
     }
   }]);
 
@@ -65940,6 +65985,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/BoardMessages.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/BoardMessages.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var BoardMessages =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(BoardMessages, _Component);
+
+  function BoardMessages() {
+    _classCallCheck(this, BoardMessages);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(BoardMessages).apply(this, arguments));
+  }
+
+  _createClass(BoardMessages, [{
+    key: "render",
+    value: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        id: "board-messages"
+      }, this.props.messages.length > 0 && this.props.messages.map(function (item, index) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          key: index
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "title"
+        }, item.subject), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+          className: "text-content"
+        }, item.content), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", null, "Posted by ", item.author, " at ", new Date(item.created_at).toLocaleDateString(), " ", new Date(item.created_at).toLocaleTimeString())));
+      }), this.props.messages.length <= 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, "No messages yet, write one!"));
+    }
+  }]);
+
+  return BoardMessages;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (BoardMessages);
 
 /***/ }),
 

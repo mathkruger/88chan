@@ -32,22 +32,20 @@ class BoardController extends Controller
         $board->slug = str_slug($request->title, '-');
 
         if($request->hasFile('banner')) {
-            if(sizeof($request->banner) > 0) {
-                $folder = date('FY');
+            $folder = date('FY');
 
-                $name = $request->banner->getClientOriginalName();
-                $upload = $request->banner->storeAs('public/board/' . $folder, $name);
+            $name = $request->banner->getClientOriginalName();
+            $upload = $request->banner->storeAs('public/board/' . $folder, $name);
 
-                if ( !$upload ) {
-                    return [
-                        'status' => false,
-                        'mensagem' => 'Não foi possível fazer o upload da imagem'
-                    ];
-                }
-
-                $path = 'board/'. $folder .'/'.$name;
-                $board->banner = $path;
+            if ( !$upload ) {
+                return [
+                    'status' => false,
+                    'mensagem' => 'Não foi possível fazer o upload da imagem'
+                ];
             }
+
+            $path = 'board/'. $folder .'/'.$name;
+            $board->banner = $path;
         }
 
         if($board->save()) {
@@ -73,7 +71,7 @@ class BoardController extends Controller
      */
     public function show($slug)
     {
-        $board = Board::where('slug', $slug)->first();
+        $board = Board::with('messages')->where('slug', $slug)->first();
         return $board;
     }
 

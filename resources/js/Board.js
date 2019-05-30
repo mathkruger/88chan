@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import BoardMessages from './components/BoardMessages';
 
 class Board extends Component {
     constructor() {
@@ -10,6 +11,22 @@ class Board extends Component {
 
     componentDidMount() {
         this.getBoard()
+    }
+
+    sendMessage = (e) => {
+        e.preventDefault()
+        document.querySelector('#board-content .message-form button').innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>'
+
+        let form = new FormData(e.target)
+
+        axios.post('/api/messages', form)
+        .then(res => {
+            if(res.data.status) {
+                document.querySelector('#board-content .message-form').reset()
+                document.querySelector('#board-content .message-form button').innerHTML = 'Send'
+                this.getBoard()
+            }
+        })
     }
 
     getBoard = () => {
@@ -34,6 +51,28 @@ class Board extends Component {
                                 <div className="img" style={{backgroundImage: 'url(' + this.state.board.banner + ')'}}></div>
                             </figure>
                             <h2>/b/{this.state.board.title}</h2>
+
+                            <form className="message-form" onSubmit={this.sendMessage}>
+                                <input type="hidden" name="board_id" value={this.state.board.id} />
+                                <div className="input-group">
+                                    <label>Subject</label>
+                                    <input required type="text" name="subject" placeholder="Subject" />
+                                </div>
+
+                                <div className="input-group">
+                                    <label>Author name</label>
+                                    <input required type="text" name="author" placeholder="Author" />
+                                </div>
+
+                                <div className="input-group">
+                                    <label>Message</label>
+                                    <textarea name="content" rows="5" placeholder="Your message here"></textarea>
+                                </div>
+
+                                <button>Send</button>
+                            </form>
+
+                            <BoardMessages messages={this.state.board.messages} />
                         </>
                     }
 
