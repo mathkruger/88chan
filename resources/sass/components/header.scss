@@ -1,0 +1,16 @@
+#main-header {
+    & {
+        padding: 1rem 0;
+        background: #3f3f3f;
+    }
+
+    p {
+        & {
+            display: block;
+            text-align: center;
+            font-size: 26px;
+            color: #fff;
+            font-weight: 900;
+        }
+    }
+}

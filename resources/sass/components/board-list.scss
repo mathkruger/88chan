@@ -1,0 +1,20 @@
+#boards-list {
+    & {
+        padding: 1rem 0;
+        flex-wrap: wrap;
+    }
+
+    li {
+        & {
+            padding: 10px;
+            background: #3f3f3f;
+            color: #fff;
+        }
+
+        a {
+            & {
+                color: #fff; 
+            }
+        }
+    }
+}

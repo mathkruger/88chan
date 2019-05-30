@@ -1,0 +1,14 @@
+#board-create {
+    & {
+        padding: 2rem 0;
+    }
+
+    h2 {
+        & {
+            display: block;
+            color: #3f3f3f;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+    }
+}

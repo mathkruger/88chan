@@ -1,0 +1,138 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700,900);html {
+  font-size: 1rem !important;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.section {
+  width: 100%;
+  float: left;
+}
+
+.reset p,
+.reset a,
+.reset span,
+.reset ul,
+.reset li,
+.reset h1,
+.reset h2,
+.reset h3,
+.reset h4,
+.reset h5,
+.reset h6,
+.reset label,
+.reset aside {
+  display: initial;
+  font-size: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  color: #000;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+}
+
+.reset form,
+.reset fieldset,
+.reset input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+}
+
+.reset figure,
+.reset figcaption,
+.reset img {
+  width: auto;
+  height: auto;
+  display: block;
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+.reset .content {
+  width: 100%;
+  max-width: calc(920px + 2rem);
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.reset .flex {
+  display: flex;
+}
+
+#main-footer {
+  position: fixed;
+  bottom: 0;
+  padding: 1rem 0;
+}
+
+#main-footer p {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #3f3f3f;
+  font-weight: 700;
+}
+
+#main-header {
+  padding: 1rem 0;
+  background: #3f3f3f;
+}
+
+#main-header p {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  color: #fff;
+  font-weight: 900;
+}
+
+#lista-boards {
+  padding: 2rem 0;
+}
+
+#lista-boards h2 {
+  display: block;
+  color: #3f3f3f;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+#boards-list {
+  padding: 1rem 0;
+  flex-wrap: wrap;
+}
+
+#boards-list li {
+  padding: 10px;
+  background: #3f3f3f;
+  color: #fff;
+}
+
+#boards-list li a {
+  color: #fff;
+}
+
+#board-create {
+  padding: 2rem 0;
+}
+
+#board-create h2 {
+  display: block;
+  color: #3f3f3f;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+

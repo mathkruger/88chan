@@ -1,0 +1,17 @@
+#main-footer {
+    & {
+        position: fixed;
+        bottom: 0;
+        padding: 1rem 0;
+    }
+
+    p {
+        & {
+            display: block;
+            text-align: center;
+            font-size: 14px;
+            color: #3f3f3f;
+            font-weight: 700;
+        }
+    }
+}
