@@ -7,13 +7,27 @@
     li {
         & {
             padding: 10px;
-            background: #3f3f3f;
-            color: #fff;
+
+            color: #3f3f3f;
+            background: #fff;
+        }
+
+        &:hover {
+            & {
+                background: #3f3f3f;
+                color: #fff;
+            }
+
+            a {
+                & {
+                    color: #fff;
+                }
+            }
         }
 
         a {
             & {
-                color: #fff; 
+                color: #3f3f3f;
             }
         }
     }

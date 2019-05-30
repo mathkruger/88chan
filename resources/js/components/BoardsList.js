@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'axios';
+import Axios from 'axios';
 
 class BoardsList extends Component {
     constructor() {
@@ -9,6 +10,20 @@ class BoardsList extends Component {
             boards: [],
         }
     }
+
+    componentDidMount() {
+        this.getBoards()
+    }
+
+    getBoards = () => {
+        axios.get('/api/boards')
+        .then(res => {
+            this.setState({
+                boards: res.data
+            })
+        })
+    }
+
     render() {
         return (
             <ul id="boards-list" className="flex">

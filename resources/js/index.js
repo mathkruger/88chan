@@ -7,6 +7,7 @@ import Header from './components/Header';
 
 import Home from './Home';
 import BoardCreate from './BoardCreate';
+import Board from './Board';
 
 export default class App extends Component {
     render() {
@@ -17,7 +18,8 @@ export default class App extends Component {
                 <BrowserRouter>
                     <Switch>
                         <Route exact path="/" component={Home} />
-                        <Route exact path="/boards/add" component={BoardCreate} />                    
+                        <Route exact path="/boards/add" component={BoardCreate} />
+                        <Route exact path="/b/:slug" component={Board} />                   
                     </Switch>
                 </BrowserRouter>
 

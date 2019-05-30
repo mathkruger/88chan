@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
     render() {
         return (
             <header id="main-header" className="section reset">
                 <div className="content">
-                    <p className="title">
+                    <a href="/" className="title">
                         88Chan
-                    </p>
+                    </a>
                 </div>
             </header>
         );

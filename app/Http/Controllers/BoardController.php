@@ -26,7 +26,43 @@ class BoardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $board = new Board();
+
+        $board->title = $request->title;
+        $board->slug = str_slug($request->title, '-');
+
+        if($request->hasFile('banner')) {
+            if(sizeof($request->banner) > 0) {
+                $folder = date('FY');
+
+                $name = $request->banner->getClientOriginalName();
+                $upload = $request->banner->storeAs('public/board/' . $folder, $name);
+
+                if ( !$upload ) {
+                    return [
+                        'status' => false,
+                        'mensagem' => 'Não foi possível fazer o upload da imagem'
+                    ];
+                }
+
+                $path = 'board/'. $folder .'/'.$name;
+                $board->banner = $path;
+            }
+        }
+
+        if($board->save()) {
+            return [
+                'status' => true,
+                'mensagem' => 'Board cadastrado!',
+                'data' => $board
+            ];
+        }
+        else {
+            return [
+                'status' => false,
+                'mensagem' => 'Algo deu errado'
+            ];
+        }
     }
 
     /**
@@ -35,9 +71,10 @@ class BoardController extends Controller
      * @param  \App\Board  $board
      * @return \Illuminate\Http\Response
      */
-    public function show(Board $board)
+    public function show($slug)
     {
-        //
+        $board = Board::where('slug', $slug)->first();
+        return $board;
     }
 
     /**

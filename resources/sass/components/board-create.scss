@@ -9,6 +9,51 @@
             color: #3f3f3f;
             text-transform: uppercase;
             font-size: 18px;
+            text-align: center;
+        }
+    }
+
+    .board-form {
+        & {
+            flex-direction: column;
+            max-width: 500px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .input-group {
+            & {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: .5rem;
+            }
+
+            label {
+                & {
+                    font-size: 14px;
+                    color: #3f3f3f;
+                    text-transform: uppercase;
+                }
+            }
+
+            input {
+                & {
+                    background: #dddcdc;
+                    padding: .5rem;
+                }
+            }
+        }
+
+        button {
+            & {
+                margin: 1rem 0;
+                border: 0;
+                padding: 1rem;
+                background: #3f3f3f;
+                color: #fff;
+                text-transform: uppercase;
+                cursor: pointer;
+            }
         }
     }
 }
