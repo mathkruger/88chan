@@ -52,6 +52,8 @@ class Board extends Component {
                             </figure>
                             <h2>/b/{this.state.board.title}</h2>
 
+                            <BoardMessages messages={this.state.board.messages} />
+
                             <form className="message-form" onSubmit={this.sendMessage}>
                                 <input type="hidden" name="board_id" value={this.state.board.id} />
                                 <div className="input-group">
@@ -71,8 +73,6 @@ class Board extends Component {
 
                                 <button>Send</button>
                             </form>
-
-                            <BoardMessages messages={this.state.board.messages} />
                         </>
                     }
 

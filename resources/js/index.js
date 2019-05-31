@@ -12,19 +12,17 @@ import Board from './Board';
 export default class App extends Component {
     render() {
         return (
-            <>
+            <BrowserRouter>
                 <Header />
 
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/" component={Home} />
-                        <Route exact path="/boards/add" component={BoardCreate} />
-                        <Route exact path="/b/:slug" component={Board} />                   
-                    </Switch>
-                </BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/boards/add" component={BoardCreate} />
+                    <Route exact path="/b/:slug" component={Board} />                   
+                </Switch>
 
                 <Footer />
-            </>
+            </BrowserRouter>
         );
     }
 }

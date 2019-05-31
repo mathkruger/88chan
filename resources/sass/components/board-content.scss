@@ -10,7 +10,7 @@
             color: #3f3f3f;
             font-size: 18px;
             text-align: center;
-            margin-top: 1rem;
+            margin: 1rem 0;
         }
     }
 
@@ -30,8 +30,8 @@
         & {
             flex-direction: column;
             max-width: 500px;
-            margin: 2rem auto;
-            padding: 1rem;
+            margin: 2rem 0;
+            padding: 1rem 0;
         }
 
         .input-group {

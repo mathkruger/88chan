@@ -65693,7 +65693,9 @@ function (_Component) {
         style: {
           backgroundImage: 'url(' + this.state.board.banner + ')'
         }
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "/b/", this.state.board.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "/b/", this.state.board.title), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BoardMessages__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        messages: this.state.board.messages
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "message-form",
         onSubmit: this.sendMessage
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -65720,9 +65722,7 @@ function (_Component) {
         name: "content",
         rows: "5",
         placeholder: "Your message here"
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_BoardMessages__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        messages: this.state.board.messages
-      }))));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Send")))));
     }
   }]);
 
@@ -66263,8 +66263,8 @@ function (_Component) {
         className: "section reset"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "content"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-        href: "/",
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/",
         className: "title"
       }, "88Chan")));
     }
@@ -66338,7 +66338,7 @@ function (_Component) {
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
         exact: true,
         path: "/",
         component: _Home__WEBPACK_IMPORTED_MODULE_5__["default"]
@@ -66350,7 +66350,7 @@ function (_Component) {
         exact: true,
         path: "/b/:slug",
         component: _Board__WEBPACK_IMPORTED_MODULE_7__["default"]
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 

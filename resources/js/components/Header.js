@@ -6,9 +6,9 @@ class Header extends Component {
         return (
             <header id="main-header" className="section reset">
                 <div className="content">
-                    <a href="/" className="title">
+                    <Link to="/" className="title">
                         88Chan
-                    </a>
+                    </Link>
                 </div>
             </header>
         );

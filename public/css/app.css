@@ -191,7 +191,7 @@ body {
   color: #3f3f3f;
   font-size: 18px;
   text-align: center;
-  margin-top: 1rem;
+  margin: 1rem 0;
 }
 
 #board-content figure .img {
@@ -205,8 +205,8 @@ body {
 #board-content .message-form {
   flex-direction: column;
   max-width: 500px;
-  margin: 2rem auto;
-  padding: 1rem;
+  margin: 2rem 0;
+  padding: 1rem 0;
 }
 
 #board-content .message-form .input-group {
@@ -243,10 +243,9 @@ body {
 
 #board-messages li {
   display: block;
-  padding: 1rem 0;
-  margin: 1rem 0;
-  border-top: 1px solid;
-  border-bottom: 1px solid;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #c3c3c3;
 }
 
 #board-messages li p {
